@@ -11,11 +11,6 @@ var corsOptions = {
   credentials: true
 };
 
-app.use((req, res, next) => {
-  console.log('Headers:', req.headers);
-  next();
-});
-
 app.use(cors(corsOptions));
 // Define the route handler for the root path
 app.get("/", (req, res) => {
