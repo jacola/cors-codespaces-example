@@ -6,7 +6,7 @@ function App() {
 
   const fetchMessage = async () => {
     try {
-      const response = await axios.get("http://localhost:8000");
+      const response = await axios.get(`https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/`, { withCredentials: true });
       console.log("Response:", response);
       setMessage(response.data.message);
     } catch (error) {

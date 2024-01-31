@@ -6,12 +6,17 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: ["http://localhost:3000", "http://localhost:8000"],
+  origin: ["https://${process.env.CODESPACE_NAME}-3000.app.github.dev", "https://${process.env.CODESPACE_NAME}-8000.app.github.dev"],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials: true
 };
 
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  console.log('Headers:', req.headers);
+  next();
+});
 
+app.use(cors(corsOptions));
 // Define the route handler for the root path
 app.get("/", (req, res) => {
   // Send a JSON response
