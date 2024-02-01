@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: ["https://${process.env.CODESPACE_NAME}-3000.app.github.dev", "https://${process.env.CODESPACE_NAME}-8000.app.github.dev"],
+  origin: [`https://${process.env.CODESPACE_NAME}-3000.app.github.dev`],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true
 };
@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello world!" });
 });
 
-// Start the server on port 3000
+// Start the server on port 8000
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
 });
